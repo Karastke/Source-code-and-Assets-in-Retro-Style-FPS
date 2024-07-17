@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public int currentAmmo;
 
     public Animator gunAnim;
+    public Animator anim;
 
     public int currentHealth;
     public int maxHealth;
@@ -97,6 +98,15 @@ public class PlayerController : MonoBehaviour
                     UpdateAmmoUI();
             }
 
+        }
+
+        if(moveInput != Vector2.zero)
+        {
+                anim.SetBool("isMoving", true);
+        }
+        else
+        {
+                anim.SetBool("isMoving", false);
         }
         }
 
