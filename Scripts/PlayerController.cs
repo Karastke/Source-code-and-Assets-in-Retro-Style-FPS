@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public GameObject deadScreen;
     private bool hasDied;
 
+    public Text healthText, ammoText;
+
     private void Awake()
     {
         instance = this;
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour
         // Rigidbody2D 컴포넌트를 가져와서 초기화
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        healthText.text = currentHealth.ToString() + "%";
+        ammoText.text = currentAmmo.ToString();
     }
 
     void Update()
@@ -89,6 +94,7 @@ public class PlayerController : MonoBehaviour
             }
                         currentAmmo --;
             gunAnim.SetTrigger("Shoot");
+                    UpdateAmmoUI();
             }
 
         }
@@ -105,7 +111,10 @@ public class PlayerController : MonoBehaviour
         {
             deadScreen.SetActive(true);
             hasDied = true;
+            currentHealth = 0;
         }
+
+        healthText.text = currentHealth.ToString() + "%";
     }
 
     public void AddHealth(int healAmount)
@@ -115,5 +124,12 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+
+        healthText.text = currentHealth.ToString() + "%";
+    }
+
+    public void UpdateAmmoUI()
+    {
+        ammoText.text = currentAmmo.ToString();
     }
 }
