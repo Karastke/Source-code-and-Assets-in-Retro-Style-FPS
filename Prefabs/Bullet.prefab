@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 5
   bulletSpeed: 3
+  lifeTime: 5
 --- !u!50 &1180194473335747257
 Rigidbody2D:
   serializedVersion: 4

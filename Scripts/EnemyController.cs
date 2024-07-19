@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
                     Instantiate(bullet, firePoint.position, firePoint.rotation);
                     shotCounter = fireRate;
                 }
+
             }
         }
 

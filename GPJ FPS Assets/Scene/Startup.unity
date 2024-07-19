@@ -2241,7 +2241,7 @@ GameObject:
   - component: {fileID: 1096463676}
   m_Layer: 8
   m_Name: Ceiling
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9832,7 +9832,7 @@ GameObject:
   - component: {fileID: 1350535663}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16308,7 +16308,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1441588641
 RectTransform:
@@ -18035,6 +18035,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverImage: {fileID: 209875211}
+  healthUI: {fileID: 886120767}
+  ammoUI: {fileID: 1851321824}
 --- !u!4 &2134755089
 Transform:
   m_ObjectHideFlags: 0

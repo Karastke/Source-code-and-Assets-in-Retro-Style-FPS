@@ -9,6 +9,9 @@ public class EnemyBullet : MonoBehaviour
 
     private Vector3 direction;
 
+    public float lifeTime;
+    private float timer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +24,12 @@ public class EnemyBullet : MonoBehaviour
     void Update()
     {
         rb.velocity = direction * bulletSpeed;
+
+        timer += Time.deltaTime;
+        if (timer >= lifeTime)
+        {
+            Destroy(gameObject);
+        }
         
     }
 
@@ -32,5 +41,11 @@ public class EnemyBullet : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        else if (other.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
