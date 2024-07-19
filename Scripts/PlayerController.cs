@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;
 
     public GameObject deadScreen;
-    private bool hasDied;
+    public bool hasDied;
 
     public Text healthText, ammoText;
 
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("I'm looking at nothing");
             }
                         currentAmmo --;
+                    AudioController.instance.PlayeGunShot();
             gunAnim.SetTrigger("Shoot");
                     UpdateAmmoUI();
             }
@@ -115,10 +116,12 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        AudioController.instance.PlayPlayerHurt();
         currentHealth -= damageAmount;
 
         if(currentHealth <= 0)
         {
+            AudioController.instance.backgroundMusic.Stop();
             deadScreen.SetActive(true);
             hasDied = true;
             currentHealth = 0;

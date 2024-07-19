@@ -9,6 +9,7 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            AudioController.instance.PlayHealthPickup();
             PlayerController.instance.AddHealth(healthAmount);
 
             Destroy(gameObject);

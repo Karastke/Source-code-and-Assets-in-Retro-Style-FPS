@@ -2,13 +2,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static GameManager instance;
+
+
+    public GameObject gameOverImage, healthUI, ammoUI;
+
+    void Awake()
+    {
+        GameManager.instance = this;
+    }
+
     void Start()
     {
         LockCursor();
+        gameOverImage.SetActive(false);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -16,9 +26,17 @@ public class GameManager : MonoBehaviour
             UnlockCursor();
         }
 
-        if(Input.GetMouseButton(0))
+        if (PlayerController.instance.hasDied == true)
+        {
+            UnlockCursor();
+            healthUI.SetActive(false);
+            ammoUI.SetActive(false);
+            Time.timeScale = 0;
+        }
+        else
         {
             LockCursor();
+            Time.timeScale = 1;
         }
     }
 
